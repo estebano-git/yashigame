@@ -1,0 +1,9 @@
+
+.idea/vcs.xml
+__pycache__/graph.cpython-310.pyc
+__pycache__/init_game.cpython-310.pyc
+logic/__pycache__/all_constraints.cpython-310.pyc
+logic/__pycache__/exactly_k.cpython-310.pyc
+logic/__pycache__/no_crossings.cpython-310.pyc
+logic/__pycache__/no_cycles.cpython-310.pyc
+logic/__pycache__/soft_constraints.cpython-310.pyc

@@ -1,16 +1,17 @@
 import networkx as nx
 
 
-def create_graph_no_edges(points):
-
-    g = nx.Graph()
-    g.add_nodes_from(points)
-    edges = list(nx.minimum_spanning_edges(g, algorithm='kruskal'))
-    print(edges)
-    g.add_edges_from(edges)
-    print(g)
-
-    return g
+def create_graph(points, edges=[], weights=[]): # See if we delete this
+    """Input a list of points outputs a graph with edges"""
+    graph = nx.Graph()
+    graph.add_nodes_from(points)
+    if len(edges) > 0 and len(weights):
+        for index, edge in enumerate(edges):
+            graph.add_edge(edge[0], edge[1], weight=weights[index])
+    elif len(edges) > 0:
+        for edge in edges:
+            graph.add_edge(edge[0], edge[1])
+    return graph
 
 
 def add_edges_graph(graph, edges, weights):

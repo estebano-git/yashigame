@@ -1,8 +1,12 @@
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import networkx as nx
+from graph import create_graph
 
 
-def plot_graph(grid_size, points, graph, title=""):
+def plot_graph(grid_size, points, edges=[], title=""):
+    # Create graph to plot
+    graph = create_graph(points, edges)
+
     plt.figure(figsize=(grid_size, grid_size))
     pos = dict((point, point) for point in points)
 

@@ -26,13 +26,14 @@ def get_points(grid_size, num_points, seed, mode='random', file=''):
 
 
 def generate_edges(points):
-    """Returns a tuple with lists: literals, edges, weights"""
+    """Returns lists: literals, edges, weights and lits_edges_dict mapping"""
     # Our literals are mapped to the natural numbers
     i = 1
 
     literals = []
     edges = []
     weights = []
+    lits_edges_dict = {}
 
     # Sort the points ascending, for vertical edges
     points_vert = sorted(points, key=lambda x: (x[0], x[1]))
@@ -43,16 +44,20 @@ def generate_edges(points):
     for index, point in enumerate(points_vert):
         if index < len(points_vert) - 1 and point[0] == points_vert[index + 1][0]:
             literals.append(i)
-            edges.append((point, points_vert[index + 1]))
+            edge = (point, points_vert[index + 1])
+            edges.append(edge)
             weights.append(points_vert[index + 1][1] - point[1])
+            lits_edges_dict[i] = edge
             i = i + 1
 
     # Get the horizontal edges
     for index, point in enumerate(points_hor):
         if index < len(points_hor) - 1 and point[1] == points_hor[index + 1][1]:
             literals.append(i)
-            edges.append((point, points_hor[index + 1]))
+            edge = (point, points_hor[index + 1])
+            edges.append(edge)
             weights.append(points_hor[index + 1][0] - point[0])
+            lits_edges_dict[i] = edge
             i = i + 1
 
-    return literals, edges, weights
+    return literals, edges, weights, lits_edges_dict

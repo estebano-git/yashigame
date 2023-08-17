@@ -5,6 +5,7 @@ An instance of the Yashi game is specified by a n×n integer grid for some n > 2
 2.  No two segments overlap.
 3.  No two segments cross each other.
 4. The segments form a tree, i.e., they form a graph without cycles. Put differently still, for everytwo nodes a and b there is exactly one path between a and b.
+5. An optimal solution is that which satisfies constraints 1-4 and has the minimum total segment length.
 
 This program encodes the Yashi Game in propositional logic to obtain an optimal solution, it takes an input file of the points for the game or generates them randomly.
 

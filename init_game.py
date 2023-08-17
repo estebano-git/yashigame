@@ -2,27 +2,28 @@ import random
 import pandas as pd
 
 
-def get_points(grid_size, num_points, seed, mode='random', file=''):
+def generate_points(grid_size, num_points, seed):
     random.seed(seed)
     """Return the list of points"""
 
-    if mode == 'random':
-        if num_points > grid_size * grid_size:
-            raise ValueError("Number of points cannot exceed grid size.")
+    if num_points > grid_size * grid_size:
+        raise ValueError("Number of points cannot exceed grid size.")
 
-        # Get random points without overlapping:
-        points = set()
-        while len(points) < num_points:
-            x = random.randint(0, grid_size - 1)
-            y = random.randint(0, grid_size - 1)
-            points.add((x, y))
-
-    else:
-        assert isinstance(file, str), "Give file path"
-        df = pd.read_csv(file, header=None)
-        points = [tuple(row) for row in df.values]
-
+    # Generate random points without overlapping:
+    points = set()
+    while len(points) < num_points:
+        x = random.randint(0, grid_size - 1)
+        y = random.randint(0, grid_size - 1)
+        points.add((x, y))
     return list(points)
+
+
+def get_points(file_path: str):
+    """Input file path
+    Return list of tuples (points)"""
+    df = pd.read_csv(file_path, header=None)
+    points = [tuple(row) for row in df.values]
+    return points
 
 
 def generate_edges(points):

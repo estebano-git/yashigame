@@ -12,10 +12,10 @@ def no_cycles(points, literals, edges, weights) -> WCNF:
     # Generate our graph
     graph = create_graph(points, edges, weights)
 
-    # Get all subcycles from the graph, each subcycle is a list of nodes
+    # Get cycles basis from the graph, each base cycle is a list of nodes
     cycles = nx.cycle_basis(graph, root=None)
 
-    # Get all edges that are part of the subcycles
+    # Get all edges that are part of the cycles
     edges_cycles = []
     for cycle in cycles:
         edges_cycles.append(generate_edges(cycle)[1])

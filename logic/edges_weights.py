@@ -6,7 +6,6 @@ def wcnf_edges(literals, weights):
     for MaxSat solving"""
     wcnf = WCNF()
     for index, literal in enumerate(literals):
-        print(literal)
         wcnf.append([literal], weight=-weights[index])
 
     return wcnf
